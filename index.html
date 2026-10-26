@@ -126,6 +126,7 @@
   <nav role="tablist">
     <button role="tab" data-tab="bio">bio</button>
     <button role="tab" data-tab="cv">cv</button>
+    <button role="tab" data-tab="projects">projects</button>
     <button role="tab" data-tab="publications">publications</button>
     <button role="tab" data-tab="engagement">public engagement</button>
   </nav>
@@ -185,6 +186,11 @@
 
     <h2>methods</h2>
     <p>ambulatory ECG and HRV · ecological momentary assessment · immersive VR · meta-analysis · Python · R</p>
+  </section>
+
+  <!-- PROJECTS: rendered from the list in the script at the bottom -->
+  <section id="projects" role="tabpanel" hidden>
+    <div id="projectlist"></div>
   </section>
 
   <!-- PUBLICATIONS: rendered from the list in the script at the bottom -->
@@ -313,6 +319,40 @@ const PUBLICATIONS = [
     venue: "Center for Research on Prejudice", doi: "" }
 ];
 
+const PROJECTS = [
+  {
+    when: "2026–2028",
+    title: "Interpersonal Distance and Loneliness: Investigation Through Virtual Reality and Experience Sampling",
+    sub: "my fellowship project · Humboldt Research Fellowship, Alexander von Humboldt Foundation. Max Planck Institute for Human Cognitive and Brain Sciences"
+  },
+  {
+    when: "now",
+    title: "Cognitive Science of Yoga",
+    sub: "team member · multidisciplinary group of researchers, practitioners and communicators studying the mind-body connection and contemplative practices",
+    url: "https://cogsciyoga.org/Team/team.php"
+  },
+  {
+    when: "2025–2026",
+    title: "How does loneliness relate to affective and physiological dynamics during social interactions in real life and immersive virtual reality?",
+    sub: "my fellowship project · Bekker Fellowship, Polish National Agency for Academic Exchange (NAWA). Max Planck Institute for Human Cognitive and Brain Sciences"
+  },
+  {
+    when: "2024–2025",
+    title: "EPSILON: Precisely distinguish post-COVID symptoms",
+    sub: "research assistant · research consortium funded by the German Federal Ministry of Research, Technology and Space"
+  },
+  {
+    when: "2019–2024",
+    title: "How does loneliness impact social information processing? From neural activity through physiological markers to everyday functioning",
+    sub: "PhD researcher · OPUS grant, National Science Centre Poland (NCN). PI: Łukasz Okruszek, Institute of Psychology, Polish Academy of Sciences"
+  },
+  {
+    when: "2018",
+    title: "Political Apologies across Cultures",
+    sub: "research assistant · ERC Consolidator Grant, European Research Council. PI: Juliëtte Schaafsma"
+  }
+];
+
 const ENGAGEMENT = [
   {
     when: "Nov 2026",
@@ -373,8 +413,8 @@ function renderPubs() {
   }).join("")).join("");
 }
 
-function renderTalks() {
-  document.getElementById("talks").innerHTML = ENGAGEMENT.map(e => {
+function renderList(id, items) {
+  document.getElementById(id).innerHTML = items.map(e => {
     const title = e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>` : esc(e.title);
     return `<div class="entry"><div class="when">${esc(e.when)}</div><div class="what">
       <div class="title">${title}</div><div class="sub">${esc(e.sub)}</div></div></div>`;
@@ -413,7 +453,8 @@ toggle.addEventListener("click", () => {
 });
 
 renderPubs();
-renderTalks();
+renderList("projectlist", PROJECTS);
+renderList("talks", ENGAGEMENT);
 show(location.hash.slice(1));
 </script>
 </body>
