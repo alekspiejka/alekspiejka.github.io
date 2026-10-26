@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aleksandra Piejka</title>
+<meta name="description" content="Aleksandra Piejka, postdoctoral researcher at MPI CBS, based in Berlin. Psychophysiology of loneliness and social connectedness.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='25' font-size='26' text-anchor='middle' fill='%233DFF88'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #000000;
+    --text: #FFFFFF;
+    --muted: #8A8A8A;
+    --soft: #141414;
+    --accent: #3DFF88;
+    --glow: 0 0 10px rgba(61, 255, 136, 0.45);
+    --font: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF;
+    --text: #000000;
+    --muted: #6B6B6B;
+    --soft: #F2F2F2;
+    --accent: #00A63E;
+    --glow: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    transition: background .25s, color .25s;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-shadow: var(--glow); }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  button:focus:not(:focus-visible) { outline: none; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+
+  /* header */
+  header { display: flex; gap: 28px; align-items: center; margin-bottom: 40px; }
+  .photo {
+    flex: 0 0 132px; width: 132px; height: 132px;
+    border-radius: 50%;
+    background: var(--soft);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-weight: 700; font-size: 34px; letter-spacing: .04em;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  h1 { margin: 0; font-size: 34px; line-height: 1.15; font-weight: 700; letter-spacing: -.01em; }
+  .role { margin: 8px 0 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
+  .links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; }
+
+  .toggle { position: fixed; top: 18px; right: 18px; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center; color: var(--text); }
+  .toggle svg { width: 22px; height: 22px; }
+
+  /* tabs */
+  nav { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-bottom: 36px; }
+  nav button { font-weight: 700; font-size: 17px; color: var(--muted); padding: 4px 0; transition: color .2s; }
+  nav button:hover { color: var(--text); }
+  nav button[aria-selected="true"] { color: var(--accent); text-shadow: var(--glow); }
+
+  section[hidden] { display: none; }
+  h2 { font-size: 15px; font-weight: 700; text-transform: lowercase; letter-spacing: .06em;
+       color: var(--accent); margin: 36px 0 12px; }
+  h2:first-child { margin-top: 0; }
+  p { margin: 0 0 16px; }
+
+  /* entries (cv, publications, engagement) */
+  .entry { display: grid; grid-template-columns: 96px 1fr; gap: 4px 20px; margin-bottom: 18px; }
+  .entry .when { color: var(--muted); font-size: 15px; padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .entry .what { min-width: 0; }
+  .entry .title { font-weight: 600; }
+  .entry .sub { color: var(--muted); font-size: 15px; }
+  .entry .authors b { font-weight: 700; color: var(--text); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent);
+         letter-spacing: .05em; margin-left: 6px; }
+
+  .note { color: var(--muted); font-size: 15px; }
+
+  footer { margin-top: 64px; color: var(--muted); font-size: 14px; }
+  footer .star { color: var(--accent); text-shadow: var(--glow); }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 64px 16px 48px; }
+    header { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .photo { width: 104px; height: 104px; flex-basis: 104px; font-size: 28px; }
+    h1 { font-size: 28px; }
+    .entry { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<button class="toggle" id="toggle" aria-label="toggle day and night mode"></button>
+
+<div class="wrap">
+
+  <header>
+    <div class="photo" id="photo">
+      <img src="photo.jpg" alt="Aleksandra Piejka">
+    </div>
+    <div>
+      <h1>Aleksandra Piejka</h1>
+      <p class="role">postdoctoral researcher, Max Planck Institute for Human Cognitive and Brain Sciences<br>
+      hosted by the Max Planck Institute for Human Development, Berlin</p>
+      <div class="links">
+        <a href="mailto:piejka@cbs.mpg.de">email</a>
+        <a href="https://orcid.org/0000-0002-6122-7845">orcid</a>
+        <a href="https://scholar.google.com/citations?user=SKyHe-gAAAAJ">scholar</a>
+        <a href="https://github.com/alekspiejka">github</a>
+        <a href="https://osf.io/9qweh/">osf</a>
+      </div>
+    </div>
+  </header>
+
+  <nav role="tablist">
+    <button role="tab" data-tab="bio">bio</button>
+    <button role="tab" data-tab="cv">cv</button>
+    <button role="tab" data-tab="publications">publications</button>
+    <button role="tab" data-tab="engagement">public engagement</button>
+  </nav>
+
+  <!-- BIO -->
+  <section id="bio" role="tabpanel">
+    <p>I study how loneliness and social connection show up in the body. I combine physiological measurements in and out of the lab, experience sampling in everyday life and immersive virtual reality.</p>
+    <p>I am a Humboldt Postdoctoral Fellow in Michael Gaebler's <a href="https://www.cbs.mpg.de/departments/neurology/mind-body-emotion">Mind-Body-Emotion group</a> at the Max Planck Institute for Human Cognitive and Brain Sciences. The group is hosted by the Max Planck Institute for Human Development in Berlin. In my fellowship project I study interpersonal distance and loneliness, both in immersive virtual reality and in everyday life, measured with experience sampling.</p>
+    <p>I did my PhD at the Institute of Psychology, Polish Academy of Sciences. It looked at how loneliness in young adults relates to the way they process social information and to parasympathetic activity, the part of the nervous system that helps the body regulate itself.</p>
+    <p>I think that science should serve society and not stay in the lab, so I try to share it with the public, often together with artists and NGOs.</p>
+  </section>
+
+  <!-- CV -->
+  <section id="cv" role="tabpanel" hidden>
+    <h2>positions and education</h2>
+    <div class="entry"><div class="when">2026–now</div><div class="what">
+      <div class="title">Postdoctoral Researcher, Humboldt Research Fellow</div>
+      <div class="sub"><a href="https://www.cbs.mpg.de/departments/neurology/mind-body-emotion">Mind-Body-Emotion group</a>, Max Planck Institute for Human Cognitive and Brain Sciences, hosted by the Max Planck Institute for Human Development, Berlin</div></div></div>
+    <div class="entry"><div class="when">2024–2026</div><div class="what">
+      <div class="title">Visiting Researcher</div>
+      <div class="sub"><a href="https://www.cbs.mpg.de/departments/neurology/mind-body-emotion">Mind-Body-Emotion group</a>, Max Planck Institute for Human Cognitive and Brain Sciences</div></div></div>
+    <div class="entry"><div class="when">2019–2024</div><div class="what">
+      <div class="title">PhD in Psychology, with distinction</div>
+      <div class="sub">Institute of Psychology, Polish Academy of Sciences. Dissertation on loneliness, social cognition and parasympathetic activity, supervised by Łukasz Okruszek</div></div></div>
+    <div class="entry"><div class="when">2012–2018</div><div class="what">
+      <div class="title">MSc in Psychology</div>
+      <div class="sub">University of Warsaw, experimental social psychology</div></div></div>
+
+    <h2>funding</h2>
+    <div class="entry"><div class="when">2026–2028</div><div class="what">
+      <div class="title">Humboldt Research Fellowship for Postdoctoral Researchers</div>
+      <div class="sub">“Interpersonal Distance and Loneliness: Investigation Through Virtual Reality and Experience Sampling”. Alexander von Humboldt Foundation</div></div></div>
+    <div class="entry"><div class="when">2025–2026</div><div class="what">
+      <div class="title">Bekker Fellowship</div>
+      <div class="sub">“How does loneliness relate to affective and physiological dynamics during social interactions in real life and immersive virtual reality?” Polish National Agency for Academic Exchange (NAWA)</div></div></div>
+
+    <h2>awards</h2>
+    <div class="entry"><div class="when">2025</div><div class="what">
+      <div class="title">Prime Minister's Award for the best doctoral dissertation</div></div></div>
+    <div class="entry"><div class="when">2023</div><div class="what">
+      <div class="title">START Fellowship</div>
+      <div class="sub">Foundation for Polish Science</div></div></div>
+    <div class="entry"><div class="when">2023</div><div class="what">
+      <div class="title">Young Scientist Award</div>
+      <div class="sub">MindBrainBody Symposium</div></div></div>
+    <div class="entry"><div class="when">2021</div><div class="what">
+      <div class="title">Award of the President of the Polish Academy of Sciences</div>
+      <div class="sub">for outstanding scientific achievements by doctoral candidates</div></div></div>
+
+    <h2>research visits</h2>
+    <div class="entry"><div class="when">2024</div><div class="what">
+      <div class="title">Ruhr University Bochum</div>
+      <div class="sub">hosted by Dirk Scheele</div></div></div>
+    <div class="entry"><div class="when">2023</div><div class="what">
+      <div class="title">University of California, Irvine</div>
+      <div class="sub">hosted by Julian F. Thayer</div></div></div>
+
+    <h2>methods</h2>
+    <p>ambulatory ECG and HRV · ecological momentary assessment · immersive VR · meta-analysis · Python · R</p>
+  </section>
+
+  <!-- PUBLICATIONS: rendered from the list in the script at the bottom -->
+  <section id="publications" role="tabpanel" hidden>
+    <p class="note">* shared first authorship</p>
+    <div id="pubs"></div>
+  </section>
+
+  <!-- PUBLIC ENGAGEMENT: rendered from the list in the script at the bottom -->
+  <section id="engagement" role="tabpanel" hidden>
+    <div id="talks"></div>
+  </section>
+
+  <footer><span class="star">✦</span> aleksandra piejka</footer>
+</div>
+
+<script>
+/* =========================================================
+   EDIT YOUR CONTENT HERE
+   Publications: newest first is done automatically by year.
+   Your surname is bolded automatically in author lists.
+   status: leave "" for published, or e.g. "preprint", "in review".
+   ========================================================= */
+const ME = "Piejka";
+
+const PUBLICATIONS = [
+  { year: 2026, status: "preprint",
+    authors: "Piejka, A., Elsenbruch, S., Icenhour, A., Okruszek, Ł., Scheele, D., & Packheiser, J.",
+    title: "A multivariate meta-analysis on the relationship between social connectedness and pain",
+    venue: "medRxiv", doi: "10.64898/2026.03.24.26349176" },
+  { year: 2026, status: "preprint",
+    authors: "Piejka, A.*, Fourcade, A.*, Gaebler, M., & Okruszek, Ł.",
+    title: "Lost in Emotional Space: The Associations of Emotional Bandwidth with Depression and Loneliness",
+    venue: "PsyArXiv", doi: "10.31234/osf.io/ke9gb_v1" },
+  { year: 2026, status: "",
+    authors: "Wiśniewska, M., Piejka, A., Wolak, T., & Okruszek, Ł.",
+    title: "Distinct Fusiform Subregion Activity and Connectivity in Lonely and Non-lonely Individuals During Social Information Processing",
+    venue: "Cerebral Cortex, 35(7)", doi: "" },
+  { year: 2025, status: "",
+    authors: "Gerosa, M., Agrawal, N., Ciston, A., Fischer, A., Fourcade, A., Koushik, A., Neubauer, M., Patyczek, A., Piejka, A., et al.",
+    title: "Brain-Body Analysis Special Interest Group (BBSIG)",
+    venue: "Zenodo", doi: "10.5281/zenodo.15212797" },
+  { year: 2025, status: "",
+    authors: "Wiśniewska, M., Piejka, A., Wolak, T., Scheele, D., & Okruszek, Ł.",
+    title: "Loneliness — not for the faint of heart? Effects of transient loneliness induction on neural and parasympathetic responses to affective stimuli",
+    venue: "Social Neuroscience, 1–14", doi: "10.1080/17470919.2025.2498384" },
+  { year: 2025, status: "",
+    authors: "Mąka, S., Wiśniewska, M., Piejka, A., Chrustowicz, M., & Okruszek, Ł.",
+    title: "Investigating trajectories linking social cognitive capacity, bias, and social isolation using computational modeling",
+    venue: "Social Cognitive and Affective Neuroscience, 20(1), nsae088", doi: "10.1093/scan/nsae088" },
+  { year: 2024, status: "",
+    authors: "Piejka, A., Thayer, J. F., & Okruszek, Ł.",
+    title: "The association between perceived social functioning and heart rate variability is mediated by subclinical depressive symptomatology and moderated by gender",
+    venue: "Psychophysiology, 61(10), e14622", doi: "10.1111/psyp.14622" },
+  { year: 2024, status: "",
+    authors: "Piejka, A., Wiśniewska, M., & Okruszek, Ł.",
+    title: "Threatened by others or by everything? The effects of momentary and trait loneliness on daily appraisals of social company and being alone in young adults",
+    venue: "Applied Psychology: Health and Well-Being", doi: "10.1111/aphw.12504" },
+  { year: 2024, status: "",
+    authors: "Okruszek, Ł., Jarkiewicz, M., Piejka, A., Chrustowicz, M., Krawczyk, M., Schudy, A., Harvey, P. D., … & Pinkham, A. E.",
+    title: "Loneliness is associated with mentalizing and emotion recognition abilities in schizophrenia, but only in a cluster of patients with social cognitive deficits",
+    venue: "Journal of the International Neuropsychological Society, 30(1), 27–34", doi: "10.1017/S1355617723000206" },
+  { year: 2023, status: "",
+    authors: "Okruszek, Ł., Piejka, A., Chrustowicz, M., Krawczyk, M., Jarkiewicz, M., Schudy, A., Ludwig, K., & Pinkham, A.",
+    title: "Social cognitive bias increases loneliness both directly and by decreasing social connection in patients with schizophrenia",
+    venue: "Schizophrenia Research, 256, 72–78", doi: "10.1016/j.schres.2023.04.016" },
+  { year: 2022, status: "",
+    authors: "Okruszek, Ł., Chrustowicz, M., Jarkiewicz, M., Krawczyk, M., Manera, V., Piejka, A., Schudy, A., … & Wysokiński, A.",
+    title: "Mentalizing abilities mediate the impact of basic social perception on negative symptoms in patients with schizophrenia",
+    venue: "Journal of Psychiatric Research, 155, 85–89", doi: "10.1016/j.jpsychires.2022.07.069" },
+  { year: 2022, status: "",
+    authors: "Okruszek, Ł.*, Piejka, A.*, Banasik-Jemielniak, N., & Jemielniak, D.",
+    title: "Climate change, vaccines, GMO: The N400 effect as a marker of attitudes toward scientific issues",
+    venue: "PLOS ONE, 17(10), e0273346", doi: "10.1371/journal.pone.0273346" },
+  { year: 2022, status: "",
+    authors: "Piejka, A., Piaskowska, L., & Okruszek, Ł.",
+    title: "Two Means Together? Effects of Response Bias and Sensitivity on Communicative Action Detection",
+    venue: "Journal of Nonverbal Behavior", doi: "10.1007/s10919-022-00398-2" },
+  { year: 2022, status: "",
+    authors: "Okruszek, Ł., Piejka, A., & Żurek, K.",
+    title: "Take Me to (the Empty) Church? Social Networks, Loneliness and Religious Attendance in Young Polish Adults During the COVID-19 Pandemic",
+    venue: "Journal of Religion and Health", doi: "10.1007/s10943-021-01486-1" },
+  { year: 2021, status: "",
+    authors: "Piejka, A.*, Wiśniewska, M.*, Thayer, J. F., & Okruszek, Ł.",
+    title: "Brief induction of loneliness decreases vagal regulation during social information processing",
+    venue: "International Journal of Psychophysiology, 164, 112–120", doi: "10.1016/j.ijpsycho.2021.03.002" },
+  { year: 2021, status: "",
+    authors: "Okruszek, Ł., Piejka, A., Krawczyk, M., Schudy, A., Wiśniewska, M., Żurek, K., & Pinkham, A.",
+    title: "Owner of a lonely mind? Social cognitive capacity is associated with objective, but not perceived social isolation in healthy individuals",
+    venue: "Journal of Research in Personality, 93, 104103", doi: "10.1016/j.jrp.2021.104103" },
+  { year: 2020, status: "",
+    authors: "Piejka, A., & Okruszek, Ł.",
+    title: "Do you believe what you have been told? Morality and scientific literacy as predictors of pseudoscience susceptibility",
+    venue: "Applied Cognitive Psychology, 34(5), 1072–1082", doi: "10.1002/acp.3687" },
+  { year: 2020, status: "",
+    authors: "Okruszek, Ł., Aniszewska-Stańczuk, A., Piejka, A., Wiśniewska, M., & Żurek, K.",
+    title: "Safe but lonely? Loneliness, anxiety, and depression symptoms and COVID-19",
+    venue: "Frontiers in Psychology, 11, 3222", doi: "10.3389/fpsyg.2020.579181" },
+  { year: 2020, status: "",
+    authors: "Schudy, A., Żurek, K., Wiśniewska, M., Piejka, A., Gawęda, Ł., & Okruszek, Ł.",
+    title: "Mental well-being during pandemic: The role of cognitive biases and emotion regulation strategies in risk perception and affective response to COVID-19",
+    venue: "Frontiers in Psychiatry, 1105", doi: "10.3389/fpsyt.2020.589973" },
+  { year: 2018, status: "",
+    authors: "Okruszek, Ł., Piejka, A., Wysokiński, A., Szczepocka, E., & Manera, V.",
+    title: "Biological motion sensitivity, but not interpersonal predictive coding is impaired in schizophrenia",
+    venue: "Journal of Abnormal Psychology, 127(3), 305–313", doi: "10.1037/abn0000335" },
+  { year: 2018, status: "",
+    authors: "Bala, A., Okruszek, Ł., Piejka, A., Głębicka, A., Szewczyk, E., Bosak, K., Szantroch, M., Hyniewska, S., Rysz, A., & Marchel, A.",
+    title: "Social perception in mesial temporal lobe epilepsy: interpreting social information from moving shapes and biological motion",
+    venue: "The Journal of Neuropsychiatry and Clinical Neurosciences, 30(3), 228–235", doi: "10.1176/appi.neuropsych.17080153" },
+  { year: 2017, status: "",
+    authors: "Okruszek, Ł., Piejka, A., Szczepocka, E., Wysokiński, A., & Pluta, A.",
+    title: "Affective and cognitive verbal Theory of Mind in schizophrenia — results from a novel paradigm",
+    venue: "Journal of the International Neuropsychological Society, 24(3), 305–309", doi: "10.1017/S1355617717000960" },
+  { year: 2017, status: "",
+    authors: "Okruszek, Ł., Piejka, A., Wysokiński, A., Szczepocka, E., & Manera, V.",
+    title: "The second agent effect: Interpersonal Predictive Coding in people with schizophrenia",
+    venue: "Social Neuroscience", doi: "10.1080/17470919.2017.1415969" },
+  { year: 2017, status: "",
+    authors: "Okruszek, Ł., Bala, A., Wordecha, M., Jarkiewicz, M., Wysokiński, A., Szczepocka, E., Piejka, A., … & Marchel, A.",
+    title: "Social cognition in neuropsychiatric populations: a comparison of theory of mind in schizophrenia and mesial temporal lobe epilepsy",
+    venue: "Scientific Reports, 7(1), 484", doi: "10.1038/s41598-017-00565-2" },
+  { year: 2017, status: "report",
+    authors: "Piejka, A., & Świderska, A.",
+    title: "Kontakt Polaków z mniejszością romską a mowa nienawiści [Contact between Poles and the Roma minority and hate speech]",
+    venue: "Center for Research on Prejudice", doi: "" }
+];
+
+const ENGAGEMENT = [
+  {
+    when: "Nov 2026",
+    title: "Attunement: the Loop Within and Between Bodies",
+    sub: "Berlin Science Week. Talk and panel on embodied social emotions, loneliness and connection, with a movement session led by choreographer Tanja Saban. Haus der Kulturen der Welt, Berlin",
+    url: "https://berlinscienceweek.com/programme/attunement-loop-within-and-between-bodies"
+  },
+  {
+    when: "Aug 2026",
+    title: "Science Streets",
+    sub: "co-author of the comic “Gehirn Körper Wechselwirkung” (Brain Body Interaction), illustrated by Laura Mayer and shown in public spaces in Leipzig",
+    url: "https://sciencestreets.de/comics/brain-body"
+  },
+  {
+    when: "Jun 2026",
+    title: "Are We Really Living in an Epidemic of Loneliness?",
+    sub: "Po Szkole. Public talk, Q&A and discussion on why young people report loneliness more often and what research says about building meaningful relationships. Warsaw",
+    url: "https://www.instagram.com/p/DZiSopYswB9/"
+  },
+  {
+    when: "2024–2025",
+    title: "School of Ideas in Neuroscience",
+    sub: "co-organiser, Nencki Open Lab, Warsaw",
+    url: "https://nenckiopenlab.org/the-school-of-ideas-in-neuroscience/school-of-ideas-2025/"
+  },
+  {
+    when: "2021–2024",
+    title: "Można zwariować Foundation",
+    sub: "member: expert consultation, co-creating social campaigns and psychoeducational materials, podcasts popularising science",
+    url: "https://moznazwariowac.pl/index.html"
+  }
+];
+
+/* ========================================================= */
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+
+function renderPubs() {
+  const groups = {};
+  [...PUBLICATIONS].sort((a, b) => b.year - a.year)
+    .forEach(p => (groups[p.year] ||= []).push(p));
+  const years = Object.keys(groups).sort((a, b) => b - a);
+  document.getElementById("pubs").innerHTML = years.map(y => groups[y].map((p, i) => {
+    const authors = esc(p.authors).replace(new RegExp(`(${ME},?\\s*[A-Z]\\.(?:\\s*[A-Z]\\.)*)`, "g"), "<b>$1</b>");
+    const link = p.doi ? `https://doi.org/${p.doi}` : (p.url || "");
+    const title = link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title);
+    const tag = p.status ? `<span class="tag">${esc(p.status)}</span>` : "";
+    return `<div class="entry"><div class="when">${i === 0 ? y : ""}</div><div class="what">
+      <div class="title">${title}${tag}</div>
+      <div class="sub authors">${authors}</div>
+      <div class="sub"><i>${esc(p.venue)}</i></div></div></div>`;
+  }).join("")).join("");
+}
+
+function renderTalks() {
+  document.getElementById("talks").innerHTML = ENGAGEMENT.map(e => {
+    const title = e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>` : esc(e.title);
+    return `<div class="entry"><div class="when">${esc(e.when)}</div><div class="what">
+      <div class="title">${title}</div><div class="sub">${esc(e.sub)}</div></div></div>`;
+  }).join("");
+}
+
+/* tabs, with #hash so each tab has its own link (e.g. .../#publications) */
+const tabs = [...document.querySelectorAll("nav button")];
+function show(name) {
+  if (!document.getElementById(name)) name = "bio";
+  tabs.forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name));
+  document.querySelectorAll("section").forEach(s => s.hidden = s.id !== name);
+}
+tabs.forEach(b => b.addEventListener("click", () => {
+  history.replaceState(null, "", b.dataset.tab === "bio" ? location.pathname : "#" + b.dataset.tab);
+  show(b.dataset.tab);
+}));
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+
+/* day / night: night is default; full moon = day, crescent = night */
+const MOON_FULL = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg>';
+const MOON_CRESCENT = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+const root = document.documentElement, toggle = document.getElementById("toggle");
+function setTheme(t) {
+  if (t === "light") root.setAttribute("data-theme", "light"); else root.removeAttribute("data-theme");
+  toggle.innerHTML = t === "light" ? MOON_FULL : MOON_CRESCENT;
+  document.querySelector('meta[name="theme-color"]').content = t === "light" ? "#FFFFFF" : "#000000";
+}
+let theme = "dark";
+try { theme = localStorage.getItem("site-theme") || "dark"; } catch (e) {}
+setTheme(theme);
+toggle.addEventListener("click", () => {
+  theme = theme === "light" ? "dark" : "light";
+  setTheme(theme);
+  try { localStorage.setItem("site-theme", theme); } catch (e) {}
+});
+
+renderPubs();
+renderTalks();
+show(location.hash.slice(1));
+</script>
+</body>
+</html>
